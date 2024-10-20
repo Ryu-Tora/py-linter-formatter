@@ -29,17 +29,17 @@ def format_linter_report(linter_report: dict) -> list:
     return [
         {
             "errors": [
-            {
-                "line": mistake["line_number"],
-                "column": mistake["column_number"],
-                "message": mistake["text"],
-                "name": mistake["code"],
-                "source": "flake8"
-            }
-            for mistake in mistakes
-        ] if mistakes else [],
-        "path": file_path,
-        "status": "failed" if mistakes else "passed",
+                {
+                    "line": mistake["line_number"],
+                    "column": mistake["column_number"],
+                    "message": mistake["text"],
+                    "name": mistake["code"],
+                    "source": "flake8"
+                }
+                for mistake in mistakes
+            ] if mistakes else [],
+            "path": file_path,
+            "status": "failed" if mistakes else "passed",
         }
         for file_path, mistakes in linter_report.items()
     ]
